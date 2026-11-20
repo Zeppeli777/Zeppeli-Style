@@ -32,6 +32,10 @@ import 'zeppeli-style/style.css'
 
 用 CSS 自定义属性（如 `--zp-green`、`--zp-purple` 和 `--zp-gold`）覆盖主题色。省略进度值会显示加载状态。图表接受 `{ label, value }` 数组，可设置 `variant="line"`；抽屉支持 `v-model:open` 和 `trigger` 插槽。
 
+## 交互铁球
+
+用 `<ZpSteelBall3D :size="192" />` 展示可拖动的三维铁球，键盘聚焦后可按方向键旋转。组件挂载时按需加载 Three.js；模型或视口发生变化时才重绘。WebGL 不可用时显示 SVG。小图标和进度标记使用 `ZpSteelBall`。
+
 ## 验证
 
 - `npm run build` 检查类型并生成组件包与声明文件。

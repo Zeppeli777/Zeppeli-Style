@@ -20,9 +20,8 @@ test('mobile navigation, Escape and article focus', async ({ page }) => {
 
 test('desktop progress and chart controls', async ({ page }) => {
   await page.goto('/')
-  const ball = page.getByAltText('带六边形凹槽的铜绿铁球')
+  const ball = page.getByRole('img', { name: /带六边形凹槽的铜绿铁球/ })
   await expect(ball).toBeVisible()
-  await expect.poll(() => ball.evaluate(img => (img as HTMLImageElement).naturalWidth)).toBeGreaterThan(0)
   await page.getByRole('link', { name: '打开组件试验台' }).click()
   const slider = page.getByRole('slider')
   await slider.focus()
@@ -33,4 +32,20 @@ test('desktop progress and chart controls', async ({ page }) => {
   await page.getByRole('button', { name: '切换为折线图' }).click()
   await expect(page.locator('figure circle')).toHaveCount(4)
   await expect(page.locator('figure li')).toHaveCount(4)
+})
+
+test('steel ball falls back to the static artwork without WebGL', async ({ page }) => {
+  await page.addInitScript(() => {
+    const getContext = HTMLCanvasElement.prototype.getContext
+    HTMLCanvasElement.prototype.getContext = function (this: HTMLCanvasElement, ...args: unknown[]) {
+      if (args[0] === 'webgl2') return null
+      return Reflect.apply(getContext, this, args)
+    } as typeof getContext
+  })
+  await page.goto('/')
+  const fallback = page.getByAltText('带六边形凹槽的铜绿铁球')
+  await expect.poll(() => fallback.evaluate(img => (img as HTMLImageElement).naturalWidth)).toBeGreaterThan(0)
+  await expect(page.locator('.rotation-hint')).toBeHidden()
+  await page.getByRole('link', { name: '打开组件试验台' }).click()
+  await expect(page.getByRole('progressbar')).toBeVisible()
 })

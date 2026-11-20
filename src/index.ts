@@ -1,6 +1,7 @@
 import './style.css'
 
 export { default as ZpSteelBall } from './ZpSteelBall.vue'
+export { default as ZpSteelBall3D } from './ZpSteelBall3D.vue'
 export { default as ZpIcon } from './ZpIcon.vue'
 export { default as ZpProgress } from './ZpProgress.vue'
 export { default as ZpDrawer } from './ZpDrawer.vue'

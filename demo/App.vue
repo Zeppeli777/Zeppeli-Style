@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
-import { ZpNav, ZpPanel, ZpSteelBall, ZpProgress, ZpIcon, ZpChart, ZpDrawer } from '../src'
+import { ZpNav, ZpPanel, ZpSteelBall, ZpSteelBall3D, ZpProgress, ZpIcon, ZpChart, ZpDrawer } from '../src'
 
 const links = [
   { href: '#home', label: '首页' },
@@ -71,7 +71,8 @@ onUnmounted(() => window.removeEventListener('hashchange', navigate))
           <svg viewBox="0 0 324 200" class="spiral" aria-hidden="true"><path d="M200 0v200m0-76h124m-76 0v76m0-47h76" opacity=".55"/>
             <path d="M0 200A200 200 0 0 1 200 0a124 124 0 0 1 124 124 76 76 0 0 1-76 76 47 47 0 0 1-47-47 29 29 0 0 1 29-29"/>
           </svg>
-          <ZpSteelBall :size="170" label="带六边形凹槽的铜绿铁球" />
+          <ZpSteelBall3D :size="440" />
+          <span class="rotation-hint" aria-hidden="true">拖动旋转 ↔</span>
         </div>
       </section>
       <div class="cards">
