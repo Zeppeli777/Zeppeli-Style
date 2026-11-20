@@ -38,8 +38,14 @@ import 'zeppeli-style/style.css'
 
 ## 博客与项目组件
 
+演示站的「组件目录」（`/#catalog`）可按中文名、Vue 组件名和分类筛选。每个预览旁都提供对应的单文件组件源码。
+
 | 组件 | 用法 |
 | --- | --- |
+| `ZpButton`、`ZpIconButton` | 按钮默认 `type="button"`，可传 `type="submit"`；`variant="outline"` 为描边样式。纯图标按钮需要 `icon` 和可读的 `label`。 |
+| `ZpTextField` | 传入 `label` 和字符串 `v-model`，可传 `error` 关联错误说明。支持 `type="search"` 和原生输入属性。 |
+| `ZpSelect` | 传入 `label`、字符串 `v-model` 和 `{ value, label, disabled? }[]` 形式的 `options`。 |
+| `ZpEmptyState` | 传入 `title` 和可选的 `description`，默认插槽放恢复操作，如清除筛选。 |
 | `ZpBadge` | 默认插槽放标签文字，`tone="gold"` 展示金牙徽章，也可选 `green` 或 `purple`。 |
 | `ZpTabs` | 传入 `label` 和 `{ value, label }[]`。每项用同名插槽填充内容，可通过 `v-model` 读取或设置选中项。 |
 | `ZpTimeline` | 传入 `label` 和 `items`，每个节点含唯一 `id`、`title`、可选 `detail` 和 `state`（`complete`、`current` 或 `upcoming`）。 |

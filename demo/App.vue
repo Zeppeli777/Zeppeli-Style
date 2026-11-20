@@ -1,12 +1,14 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
+import { defineAsyncComponent, ref, onMounted, onUnmounted } from 'vue'
 import { ZpNav, ZpPanel, ZpSteelBall, ZpSteelBall3D, ZpProgress, ZpIcon, ZpChart, ZpDrawer } from '../src'
 import { ZpBadge, ZpCodeBlock, ZpTabs, ZpTimeline } from '../src'
 
+const ComponentCatalog = defineAsyncComponent(() => import('./ComponentCatalog.vue'))
 const links = [
   { href: '#home', label: '首页' },
   { href: '#journal', label: '设计手记' },
   { href: '#project', label: '项目概览' },
+  { href: '#catalog', label: '组件目录' },
 ]
 const page = ref(window.location.hash || '#home')
 const progress = ref(62)
@@ -93,6 +95,7 @@ onUnmounted(() => window.removeEventListener('hashchange', navigate))
         </template>
       </ZpTabs>
     </main>
+    <ComponentCatalog v-else-if="page === '#catalog'" />
     <main v-else>
       <section class="cover">
         <div class="cover-copy"><h1>Golden<br><em>Spin</em></h1><p>杰洛风格的 Vue 组件库</p>

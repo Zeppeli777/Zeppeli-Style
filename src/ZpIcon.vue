@@ -1,6 +1,8 @@
 <script setup lang="ts">
-defineProps<{ name: 'arrow' | 'menu' | 'close' | 'flag' | 'horseshoe' | 'copy'; label?: string }>()
+defineProps<{ name: keyof typeof paths; label?: string }>()
 const paths = {
+  search: 'M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Zm-2 5 6 6',
+  external: 'M14 3h7v7m-1-6-10 10m0-10H4v16h16v-7',
   copy: 'M8 8h12v13H8z M5 16H3V3h12v2',
   arrow: 'M4 12h15m-6-6 6 6-6 6',
   menu: 'M3 6h18M3 12h18M3 18h18',

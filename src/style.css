@@ -40,6 +40,25 @@
   cursor: pointer;
 }
 .zp-action:hover { filter: brightness(1.1); }
+.zp-action-outline { background: transparent; color: var(--zp-green); }
+.zp-action:disabled { opacity: .55; cursor: default; filter: none; }
+.zp-icon-button { width: 42px; height: 42px; padding: .5rem; }
+.zp-field { display: grid; gap: .35rem; min-width: 0; color: var(--zp-ink); }
+.zp-field label { font-size: .9em; font-weight: 650; }
+.zp-field input, .zp-field select {
+  box-sizing: border-box; min-width: 0; width: 100%; min-height: 42px;
+  padding: .5rem .7rem; border: 1px solid var(--zp-brown); border-radius: 3px;
+  background: var(--zp-paper); color: var(--zp-ink); font: inherit;
+}
+.zp-field :is(input, select):focus-visible { outline: 2px solid var(--zp-green); outline-offset: 2px; }
+.zp-field input[aria-invalid="true"] { border-color: #983d32; }
+.zp-field-error { color: #913529; }
+.zp-empty {
+  display: grid; justify-items: center; gap: .65rem; text-align: center;
+  padding: 2rem 1rem; border: 1px dashed var(--zp-line); color: var(--zp-ink);
+}
+.zp-empty > svg { width: 2rem; height: 2rem; color: var(--zp-brown); }
+.zp-empty p { margin: 0; }
 .zp-action:focus-visible, .zp-nav a:focus-visible, .zp-menu a:focus-visible {
   outline: 3px solid var(--zp-purple);
   outline-offset: 3px;
