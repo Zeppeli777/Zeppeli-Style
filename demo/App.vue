@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
 import { ZpNav, ZpPanel, ZpSteelBall, ZpSteelBall3D, ZpProgress, ZpIcon, ZpChart, ZpDrawer } from '../src'
+import { ZpBadge, ZpCodeBlock, ZpTabs, ZpTimeline } from '../src'
 
 const links = [
   { href: '#home', label: '首页' },
@@ -9,6 +10,18 @@ const links = [
 ]
 const page = ref(window.location.hash || '#home')
 const progress = ref(62)
+const projectTabs = [
+  { value: 'overview', label: '进度概览' },
+  { value: 'stages', label: '赛段日志' },
+  { value: 'usage', label: '组件用法' },
+]
+const stages = [
+  { id: 'survey', state: 'complete', title: '路线勘测', detail: '标定起点与补给站，绘制赛道底图。' },
+  { id: 'trail', state: 'current', title: '穿过丘陵', detail: '沿着山脊前进，在第二座界碑记录里程。' },
+  { id: 'finish', state: 'upcoming', title: '抵达终点', detail: '汇总各段用时，归档本次行程。' },
+] as const
+const progressExample = '<ZpProgress label="赛段进度" :value="62" />'
+const iconExample = '<ZpSteelBall :size="24" label="赛段起点" />'
 const chart = ref<'bar' | 'line'>('bar')
 const contentsOpen = ref(false)
 let pendingSection = ''
@@ -39,6 +52,7 @@ onUnmounted(() => window.removeEventListener('hashchange', navigate))
     <main v-if="page === '#journal'" class="journal">
       <a href="#home">← 首页</a>
       <h1>球面上的六道刻线</h1>
+      <div class="journal-meta"><ZpBadge tone="purple">设计手记</ZpBadge><i class="checks" aria-hidden="true"></i></div>
       <ZpDrawer v-model:open="contentsOpen" title="文章目录" @close-auto-focus="focusSection">
         <template #trigger><button class="zp-action" type="button">文章目录</button></template>
         <ol><li v-for="section in [{ id: 'groove', text: '从六边形开始' }, { id: 'scale', text: '缩到二十四像素' }]" :key="section.id">
@@ -51,17 +65,33 @@ onUnmounted(() => window.removeEventListener('hashchange', navigate))
       <h2 id="scale" tabindex="-1">缩到二十四像素</h2>
       <p>在封面，铜绿高光可以铺满整个球面。放进进度条，中心刻槽和外沿仍有足够的间距，旁边的数值则给出准确进度。</p>
       <ZpProgress label="样板完成度" :value="progress" />
+      <ZpCodeBlock title="Vue · 行内铁球" :code="iconExample" />
     </main>
     <main v-else-if="page === '#project'" class="project">
       <a href="#home">← 首页</a><h1>组件试验台</h1>
-      <div class="cards">
-        <ZpPanel><ZpProgress label="赛段进度" :value="progress" />
-          <label class="range">调整进度<input v-model.number="progress" type="range" min="0" max="100"></label>
-        </ZpPanel>
-        <ZpPanel><ZpChart title="每周完成事项" unit="项" :variant="chart" :data="weeks" />
-          <button class="zp-action" @click="chart = chart === 'bar' ? 'line' : 'bar'">切换为{{ chart === 'bar' ? '折线图' : '柱状图' }}</button>
-        </ZpPanel>
-      </div>
+      <ZpTabs label="组件试验台" :items="projectTabs">
+        <template #overview>
+          <div class="cards">
+            <ZpPanel><ZpProgress label="赛段进度" :value="progress" />
+              <label class="range">调整进度<input v-model.number="progress" type="range" min="0" max="100"></label>
+            </ZpPanel>
+            <ZpPanel><ZpChart title="每周完成事项" unit="项" :variant="chart" :data="weeks" />
+              <button class="zp-action" @click="chart = chart === 'bar' ? 'line' : 'bar'">切换为{{ chart === 'bar' ? '折线图' : '柱状图' }}</button>
+            </ZpPanel>
+          </div>
+        </template>
+        <template #stages>
+          <ZpPanel><h2 class="log-title"><ZpIcon name="horseshoe" />赛程记录</h2>
+            <ZpTimeline label="赛程记录" :items="stages" />
+          </ZpPanel>
+        </template>
+        <template #usage>
+          <ZpPanel><h2 class="log-title">在页面中插入进度条</h2>
+            <p>从 zeppeli-style 导入 ZpProgress，并在应用入口引入组件库样式。</p>
+            <ZpCodeBlock title="Vue · 进度条" :code="progressExample" />
+          </ZpPanel>
+        </template>
+      </ZpTabs>
     </main>
     <main v-else>
       <section class="cover">
@@ -76,7 +106,7 @@ onUnmounted(() => window.removeEventListener('hashchange', navigate))
         </div>
       </section>
       <div class="cards">
-        <ZpPanel><i class="checks" aria-hidden="true"></i><h2><a href="#journal">球面上的六道刻线</a></h2>
+        <ZpPanel><ZpBadge tone="gold">精选手记</ZpBadge><h2><a href="#journal">球面上的六道刻线</a></h2>
           <p>从封面插图到阅读进度标记，记录一枚铁球的两种尺度。</p><a href="#journal">阅读设计手记 →</a></ZpPanel>
         <ZpPanel background="grid"><ZpProgress label="组件样板进度示例" :value="progress" />
           <a href="#project">查看图表与进度控件 →</a></ZpPanel>

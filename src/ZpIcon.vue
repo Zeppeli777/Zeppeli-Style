@@ -1,6 +1,7 @@
 <script setup lang="ts">
-defineProps<{ name: 'arrow' | 'menu' | 'close' | 'flag' | 'horseshoe'; label?: string }>()
+defineProps<{ name: 'arrow' | 'menu' | 'close' | 'flag' | 'horseshoe' | 'copy'; label?: string }>()
 const paths = {
+  copy: 'M8 8h12v13H8z M5 16H3V3h12v2',
   arrow: 'M4 12h15m-6-6 6 6-6 6',
   menu: 'M3 6h18M3 12h18M3 18h18',
   close: 'm5 5 14 14M19 5 5 19',

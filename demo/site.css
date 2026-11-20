@@ -20,6 +20,8 @@ a { color: var(--zp-green); text-underline-offset: .26em; }
 .checks { display: block; width: 48px; height: 8px; background: repeating-conic-gradient(var(--zp-brown) 0 25%, transparent 0 50%) 0 0 / 8px 8px; }
 footer { border-top: 1px solid var(--zp-line); margin-top: 3rem; padding: 1rem 0; color: var(--zp-brown); font-family: Georgia, serif; }
 .journal, .project { padding-top: 2rem; }
+.log-title, .journal-meta { display: flex; align-items: center; gap: .7rem; margin: 0 0 1rem; }
+.log-title svg { color: var(--zp-brown); }
 .journal { margin: auto; max-width: 42rem; line-height: 1.9; }
 .journal blockquote { margin: 2rem 0; padding: .8rem 1rem; border-left: 4px solid var(--zp-gold); background: #eee5d4; }
 .range { display: grid; margin-top: 2rem; gap: .5rem; }

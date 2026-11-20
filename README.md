@@ -36,6 +36,15 @@ import 'zeppeli-style/style.css'
 
 用 `<ZpSteelBall3D :size="192" />` 展示可拖动的三维铁球，键盘聚焦后可按方向键旋转。组件挂载时按需加载 Three.js；模型或视口发生变化时才重绘。WebGL 不可用时显示 SVG。小图标和进度标记使用 `ZpSteelBall`。
 
+## 博客与项目组件
+
+| 组件 | 用法 |
+| --- | --- |
+| `ZpBadge` | 默认插槽放标签文字，`tone="gold"` 展示金牙徽章，也可选 `green` 或 `purple`。 |
+| `ZpTabs` | 传入 `label` 和 `{ value, label }[]`。每项用同名插槽填充内容，可通过 `v-model` 读取或设置选中项。 |
+| `ZpTimeline` | 传入 `label` 和 `items`，每个节点含唯一 `id`、`title`、可选 `detail` 和 `state`（`complete`、`current` 或 `upcoming`）。 |
+| `ZpCodeBlock` | 传入纯文本 `code` 和可选标题 `title`。复制受限时，组件选中代码供手动复制。 |
+
 ## 验证
 
 - `npm run build` 检查类型并生成组件包与声明文件。
