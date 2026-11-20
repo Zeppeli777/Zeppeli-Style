@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Zeppeli Style · 组件库设计提案</title>
+<style>
+:root{--paper:#f7f1e3;--ink:#312a25;--green:#296558;--purple:#664471;--brown:#704932;--ochre:#c9a060;--white:#fff9eb;--line:#c7ba9e;color:var(--ink);background:var(--paper);font:16px/1.7 "Source Sans 3","Microsoft YaHei",sans-serif}
+*{box-sizing:border-box}body{max-width:1120px;margin:auto;padding:0 clamp(16px,4vw,56px) 44px}header,nav,.cap,.meter-label{display:flex;align-items:center;justify-content:space-between;gap:16px}header{border-bottom:2px solid var(--ink);padding:18px 0;flex-wrap:wrap}nav{flex-wrap:wrap}a{color:var(--green);text-underline-offset:4px}a:focus-visible{outline:3px solid var(--purple);outline-offset:3px}header b,.num{font-family:Georgia,serif}.hero{display:grid;grid-template-columns:1.618fr 1fr;align-items:center;gap:20px;padding:36px 0;border-bottom:1px solid var(--line)}h1,h2,h3,p{margin:0}h1{font:italic bold clamp(42px,8vw,94px)/1 Georgia,serif;color:var(--green);letter-spacing:-.06em;margin-bottom:12px}h2{font:700 26px/1.4 Georgia,"SimSun",serif;margin-bottom:12px}h3{font-size:18px}.hero svg{width:100%;height:auto}.palette{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin:22px 0}.chip{padding:10px;font-size:13px}.chip code{display:block}.samples{display:grid;grid-template-columns:1fr 1fr;gap:18px}article{border:1px solid var(--line);padding:22px;background:var(--white);border-radius:5px}article p{margin-top:8px}.cap{font-size:13px;color:var(--brown);margin-bottom:14px}.checks{width:52px;height:10px;background:repeating-conic-gradient(var(--brown) 0 25%,transparent 0 50%) 0 0/10px 10px}.meter-label{font-size:14px}.rail{position:relative;background:#ddd3bf;height:7px;border-radius:4px;margin:16px 0 12px}.fill{width:62%;background:var(--green);height:100%;border-radius:inherit}.ball{position:absolute;left:62%;top:50%;transform:translate(-50%,-50%);width:24px;height:24px}.chart{display:block;width:100%;max-height:100px;margin-top:14px}.details{margin-top:38px}.details li{margin:.45em 0}table{width:100%;border-collapse:collapse}td,th{text-align:left;padding:10px 6px;border-bottom:1px solid var(--line);vertical-align:top}th{color:var(--brown)}td:first-child{width:18%;font-weight:bold}footer{margin-top:30px;border-top:1px solid var(--line);padding-top:16px;font-size:14px}footer a{display:inline-block;margin-right:16px}
+@media(max-width:680px){.hero{grid-template-columns:1fr}.hero svg{max-width:300px;justify-self:center}.samples{grid-template-columns:1fr}.palette{grid-template-columns:repeat(3,1fr)}td:first-child{width:25%}}
+</style>
+<style>
+:root{--gold:#f2cb50}
+.color-note{margin:0 0 22px;padding:12px 16px;border-left:4px solid var(--gold);background:var(--white)}
+.color-note summary{font-weight:600;cursor:pointer}
+.color-note p{margin-top:8px}
+.color-note summary:focus-visible{outline:3px solid var(--purple);outline-offset:2px}
+</style>
+<header><b>Zeppeli Style</b><nav aria-label="设计提案目录"><a href="#samples">视觉样板</a><a href="#inventory">组件范围</a><a href="#delivery">实施顺序</a></nav></header>
+<main>
+<section class="hero"><div><h1>Golden Spin</h1><h2>杰洛风格组件库设计提案</h2><p>铜绿铁球沿着金黄轨迹滚过紫色封面。翻到正文，暖纸底和皮革棕接住长文，带六边形凹槽的小铁球标记阅读进度。</p></div>
+<svg viewBox="0 0 340 216" role="img" aria-label="紫色黄金矩形中，一枚铜绿铁球置于金色螺旋的起点">
+<defs>
+  <radialGradient id="green-steel" cx="34%" cy="24%" r="80%">
+    <stop stop-color="#e6f2b9"/><stop offset=".19" stop-color="#aed48b"/>
+    <stop offset=".43" stop-color="#72ac70"/><stop offset=".65" stop-color="#427f60"/>
+    <stop offset=".82" stop-color="#1c5144"/><stop offset=".94" stop-color="#234f43"/>
+    <stop offset="1" stop-color="#72957a"/>
+  </radialGradient>
+  <clipPath id="sphere-edge"><circle cx="60" cy="60" r="58"/></clipPath>
+  <path id="steel-grooves" d="M24 35 Q36 23 53 18 Q71 20 85 31 Q92 47 88 65 Q76 80 57 84 Q39 82 24 69 Q19 53 24 35 Z
+    M24 35 Q16 33 5 39 M53 18 Q53 7 47 0 M85 31 Q99 27 105 18
+    M88 65 Q107 72 119 65 M57 84 Q58 102 51 119 M24 69 Q12 79 8 91"/>
+  <symbol id="steel-ball" viewBox="0 0 120 120">
+    <circle cx="60" cy="60" r="58.5" fill="url(#green-steel)" stroke="#183e34" stroke-width="2.5"/>
+    <g clip-path="url(#sphere-edge)">
+      <path d="M23 29 Q36 10 57 9 Q48 12 42 17 Q30 21 23 29Z" fill="#f4facd" opacity=".86"/>
+      <path d="M92 86 Q103 79 110 65 Q108 80 98 91Z" fill="#b9d598" opacity=".47"/>
+      <g fill="none" stroke-linejoin="round">
+        <use href="#steel-grooves" stroke="#c2dda1" stroke-width="4.4" transform="translate(.6 1.2)"/>
+        <use href="#steel-grooves" stroke="#214b3c" stroke-width="3.6"/>
+        <use href="#steel-grooves" stroke="#102f2a" stroke-width="1.4"/>
+      </g>
+    </g>
+  </symbol>
+</defs>
+<rect x="1" y="3" width="336" height="208" rx="5" fill="var(--purple)"/><g fill="none" stroke="var(--gold)"><path opacity=".58" d="M209 3v208m0-80h128m-79 0v80m0-49h79" /><path stroke-width="2" d="M1 211A208 208 0 0 1 209 3a128 128 0 0 1 128 128 79 79 0 0 1-79 79 49 49 0 0 1-49-49 30 30 0 0 1 30-30"/></g>
+<use href="#steel-ball" x="46" y="49" width="120" height="120"/>
+</svg></section>
+<section id="samples" aria-label="配色与组件样板"><div class="palette">
+<div class="chip" style="background:var(--green);color:var(--white)">铜绿<code>#296558</code></div><div class="chip" style="background:var(--purple);color:var(--white)">衣紫<code>#664471</code></div><div class="chip" style="background:var(--gold)">金牙黄<code>#F2CB50</code></div><div class="chip" style="background:var(--brown);color:var(--white)">帽棕<code>#704932</code></div><div class="chip" style="background:var(--ochre)">发褐金<code>#C9A060</code></div><div class="chip" style="background:var(--paper);border:1px solid var(--line)">暖纸<code>#F7F1E3</code></div></div>
+<details class="color-note"><summary>不同作品的配色，怎样用在同一套组件里？</summary><p>彩色漫画把绿配饰放在深紫上衣上；动画则把橄榄绿给了披风，深紫上衣配铜色装饰。可以借用这种换色方式：博客的铁球用较暗的铜绿，项目封面改用鲜绿，并把紫色从细节点缀扩展成整块底色。金黄留给螺旋、金牙或精选标签。</p><p>这些色值是界面设计取色。换色时保留球面刻纹、螺旋轨迹、方块节奏等轮廓。选中、错误和警告各自保留图标与文字，独立于封面配色。<a href="https://jojowiki.com/Gyro_Zeppeli#Appearance">JoJo Wiki · 外观与配色对照</a></p></details>
+<div class="samples"><article><div class="cap"><span>文章卡片</span><i class="checks" aria-hidden="true"></i></div><h2>把一条赛道画进博客</h2><p>文章列表用标题、摘要和阅读时间建立层次。方格只占卡片的一角，进入正文后，交给文字和留白。</p><p><small>设计笔记 · 6 分钟阅读</small></p></article>
+<article><div class="cap">项目面板 · 示例数据</div><div class="meter-label"><b>版本准备进度</b><span>62%</span></div><div class="rail" role="progressbar" aria-label="版本准备进度" aria-valuenow="62" aria-valuemin="0" aria-valuemax="100"><div class="fill"></div><svg class="ball" viewBox="0 0 120 120" aria-hidden="true"><use href="#steel-ball" width="120" height="120"/></svg></div>
+<svg class="chart" viewBox="0 0 320 84" role="img" aria-label="每周完成事项，第一至第四周依次为 3、5、4、7 项"><path d="M16 58H302" stroke="#c7ba9e"/><g fill="#664471"><rect x="29" y="40" width="34" height="18"/><rect x="98" y="28" width="34" height="30"/><rect x="167" y="34" width="34" height="24"/><rect x="236" y="16" width="34" height="42"/></g><g fill="#312a25" font-size="12" text-anchor="middle"><text x="46" y="36">3</text><text x="115" y="24">5</text><text x="184" y="30">4</text><text x="253" y="12">7</text><text x="46" y="76">第 1 周</text><text x="115" y="76">第 2 周</text><text x="184" y="76">第 3 周</text><text x="253" y="76">第 4 周</text></g></svg><small>每周完成事项（项）</small></article></div></section>
+<section id="inventory" class="details"><h2>组件范围</h2><table><thead><tr><th>使用位置</th><th>首版</th><th>后续扩展</th></tr></thead><tbody>
+<tr><td>全站导航</td><td>顶栏、移动端菜单抽屉、文章目录、链接</td><td>面包屑、分页、Tabs、命令搜索</td></tr>
+<tr><td>内容与背景</td><td>卡片、标签、文章排版、引用、代码块、纯纸与几何衬底</td><td>项目封面、时间线、深色主题</td></tr>
+<tr><td>操作与反馈</td><td>按钮、图标按钮、输入框、进度条、加载状态</td><td>选择框、开关、复选框、弹窗、Toast、空状态、表单错误提示</td></tr>
+<tr><td>图表</td><td>单系列柱图与趋势折线、标题、单位、可读数据摘要</td><td>多系列图例、数据表、按需接入复杂图表引擎</td></tr>
+<tr><td>图标与装饰</td><td>菜单、关闭、箭头、搜索、外链、复制等操作图标；铁球、马蹄、螺旋、方格分隔线</td><td>奔马剪影、金牙徽章、路线节点与赛段旗</td></tr>
+</tbody></table></section>
+<section id="delivery" class="details"><h2>实施顺序与验收</h2><ol>
+<li><b>定视觉。</b>先敲定配色、图标在 16 / 24 像素下的轮廓、焦点环与静态纹样。文章主题默认素面；封面和项目精选区可单独开启装饰。</li>
+<li><b>按页面实现 Vue 3 首版。</b>用个人首页、中文长文、项目概览三页联调。基础层导出带前缀的 CSS 变量与 SVG，Vue 层提供 TypeScript 类型、插槽和事件。抽屉复用 Reka UI 的交互基础。</li>
+<li><b>用真实内容验收。</b>检查窄屏长标题、宽代码块、空数据、单点折线和进度边界。键盘可打开抽屉、用 Esc 关闭并回到触发项。减少动态效果时用静态球和文字提示状态。</li>
+<li><b>验证复用。</b>在一个独立 Vue 站点按需引入组件并覆盖主题色。组件样式限定在库的类名下。出现实际 React 项目后，共用变量、图形和样式，另写交互封装。</li>
+</ol></section>
+</main><footer>参考资料　<a href="https://jojowiki.com/Steel_Ball">铁球外形参考</a><a href="https://jojo-portal-anime.com/sbr/character/02/">官方角色设定</a><a href="https://reka-ui.com/docs/components/drawer">Reka UI 抽屉</a><a href="https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/">W3C 模态对话框模式</a></footer>
+</html>
