@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120"><defs><radialGradient id="green-steel" cx="34%" cy="24%" r="80%">
+    <stop stop-color="#e6f2b9"/><stop offset=".19" stop-color="#aed48b"/>
+    <stop offset=".43" stop-color="#72ac70"/><stop offset=".65" stop-color="#427f60"/>
+    <stop offset=".82" stop-color="#1c5144"/><stop offset=".94" stop-color="#234f43"/>
+    <stop offset="1" stop-color="#72957a"/>
+  </radialGradient>
+  <clipPath id="sphere-edge"><circle cx="60" cy="60" r="58"/></clipPath>
+  <path id="steel-grooves" d="M24 35 Q36 23 53 18 Q71 20 85 31 Q92 47 88 65 Q76 80 57 84 Q39 82 24 69 Q19 53 24 35 Z
+    M24 35 Q16 33 5 39 M53 18 Q53 7 47 0 M85 31 Q99 27 105 18
+    M88 65 Q107 72 119 65 M57 84 Q58 102 51 119 M24 69 Q12 79 8 91"/></defs><circle cx="60" cy="60" r="58.5" fill="url(#green-steel)" stroke="#183e34" stroke-width="2.5"/>
+    <g clip-path="url(#sphere-edge)">
+      <path d="M23 29 Q36 10 57 9 Q48 12 42 17 Q30 21 23 29Z" fill="#f4facd" opacity=".86"/>
+      <path d="M92 86 Q103 79 110 65 Q108 80 98 91Z" fill="#b9d598" opacity=".47"/>
+      <g fill="none" stroke-linejoin="round">
+        <use href="#steel-grooves" stroke="#c2dda1" stroke-width="4.4" transform="translate(.6 1.2)"/>
+        <use href="#steel-grooves" stroke="#214b3c" stroke-width="3.6"/>
+        <use href="#steel-grooves" stroke="#102f2a" stroke-width="1.4"/>
+      </g>
+    </g></svg>

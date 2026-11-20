@@ -1,0 +1,30 @@
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--zp-paper); color: var(--zp-ink); font: 16px/1.65 "Source Sans 3", "Microsoft YaHei", sans-serif; }
+.site { max-width: 1140px; margin: auto; padding: 0 clamp(16px, 4vw, 54px); }
+.site > nav { padding: 1.2rem 0; border-bottom: 2px solid var(--zp-ink); }
+a { color: var(--zp-green); text-underline-offset: .26em; }
+.brand { display: flex; align-items: center; gap: .6rem; color: var(--zp-ink); font: bold 23px Georgia, serif; text-decoration: none; }
+.cover { display: grid; grid-template-columns: 1fr 1.1fr; gap: 3%; align-items: center; padding: clamp(30px, 6vw, 76px) 0; }
+.cover h1 { margin: 0; font: bold clamp(56px, 8vw, 108px)/.87 Georgia, serif; letter-spacing: -.07em; color: var(--zp-green); }
+.cover h1 em { color: var(--zp-purple); }
+.cover-copy p { margin: 1.5rem 0 .9rem; color: var(--zp-brown); }
+.cover-link { display: inline-flex; align-items: center; gap: 12px; font-weight: bold; }
+.plate { position: relative; aspect-ratio: 1.618; overflow: hidden; background: var(--zp-purple); border: 3px double var(--zp-gold); border-radius: 4px; }
+.spiral { position: absolute; inset: 0; width: 100%; height: 100%; fill: none; stroke: var(--zp-gold); stroke-width: 1.3; }
+.plate img { position: absolute; left: 13%; top: 19%; width: 38%; height: auto; filter: drop-shadow(4px 6px 0 #312a2538); }
+.cards { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 20px; }
+.cards h2 { margin: .5rem 0; }
+.cards .zp-panel > a { display: inline-block; margin-top: 1rem; }
+.checks { display: block; width: 48px; height: 8px; background: repeating-conic-gradient(var(--zp-brown) 0 25%, transparent 0 50%) 0 0 / 8px 8px; }
+footer { border-top: 1px solid var(--zp-line); margin-top: 3rem; padding: 1rem 0; color: var(--zp-brown); font-family: Georgia, serif; }
+.journal, .project { padding-top: 2rem; }
+.journal { margin: auto; max-width: 42rem; line-height: 1.9; }
+.journal blockquote { margin: 2rem 0; padding: .8rem 1rem; border-left: 4px solid var(--zp-gold); background: #eee5d4; }
+.range { display: grid; margin-top: 2rem; gap: .5rem; }
+input { accent-color: var(--zp-green); }
+@media (max-width: 680px) {
+  .cover, .cards { grid-template-columns: 1fr; }
+  .cover { gap: 1.5rem; }
+  .cover h1 br { display: none; }
+  .cover h1 em { margin-left: .14em; }
+}
