@@ -5,6 +5,6 @@ export default defineConfig(({ mode }) => ({
   plugins: [vue()],
   build: mode === 'library' ? {
     lib: { entry: 'src/index.ts', formats: ['es'], fileName: 'index', cssFileName: 'style' },
-    rollupOptions: { external: ['vue', 'reka-ui', /^three(?:\/|$)/] },
+    rollupOptions: { external: ['vue', 'reka-ui', '@internationalized/date', /^three(?:\/|$)/] },
   } : { outDir: 'demo-dist' },
 }))

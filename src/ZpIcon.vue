@@ -1,6 +1,9 @@
 <script setup lang="ts">
 defineProps<{ name: keyof typeof paths; label?: string }>()
 const paths = {
+  home: 'm2 11 10-8 10 8m-17-1v11h5v-7h4v7h5V10',
+  journal: 'M3 4h5q3 0 4 2 1-2 4-2h5v15h-5q-3 0-4 2-1-2-4-2H3z M12 6v15',
+  grid: 'M3 3h7v7H3z M14 3h7v7h-7z M3 14h7v7H3z M14 14h7v7h-7z',
   search: 'M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Zm-2 5 6 6',
   external: 'M14 3h7v7m-1-6-10 10m0-10H4v16h16v-7',
   copy: 'M8 8h12v13H8z M5 16H3V3h12v2',

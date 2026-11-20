@@ -5,11 +5,11 @@ import { ZpBadge, ZpCodeBlock, ZpTabs, ZpTimeline } from '../src'
 
 const ComponentCatalog = defineAsyncComponent(() => import('./ComponentCatalog.vue'))
 const links = [
-  { href: '#home', label: '首页' },
-  { href: '#journal', label: '设计手记' },
-  { href: '#project', label: '项目概览' },
-  { href: '#catalog', label: '组件目录' },
-]
+  { href: '#home', label: '首页', icon: 'home' },
+  { href: '#journal', label: '设计手记', icon: 'journal' },
+  { href: '#project', label: '项目概览', icon: 'flag' },
+  { href: '#catalog', label: '组件目录', icon: 'grid' },
+] as const
 const page = ref(window.location.hash || '#home')
 const progress = ref(62)
 const projectTabs = [
@@ -48,7 +48,7 @@ onUnmounted(() => window.removeEventListener('hashchange', navigate))
 
 <template>
   <div class="site">
-    <ZpNav :links="links" :current="page">
+    <ZpNav :links="links" :current="page" sticky>
       <template #brand><a class="brand" href="#home"><ZpSteelBall :size="33" /> Zeppeli Style</a></template>
     </ZpNav>
     <main v-if="page === '#journal'" class="journal">

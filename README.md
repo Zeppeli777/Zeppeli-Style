@@ -42,6 +42,11 @@ import 'zeppeli-style/style.css'
 
 | 组件 | 用法 |
 | --- | --- |
+| `ZpSidebar` | 传入目录 `label` 和 `{ value, label, detail?, href? }[]`。用 `v-model` 绑定当前项，`v-model:collapsed` 控制折叠；带 `href` 的项目生成原生链接。 |
+| `ZpNav` | 保持原有 `links` 和 `current` 用法，每项可加 `icon`。传入 `sticky` 启用吸顶；`brand`、`actions` 插槽放品牌和额外操作。手机端使用菜单抽屉。 |
+| `ZpCheckbox` | `label` 配布尔型 `v-model`；支持 `indeterminate` 和原生复选框属性。 |
+| `ZpCheckboxGroup`、`ZpMultiSelect` | 均绑定字符串数组，接受 `label`、`options`（与选择框一致）、`name` 和 `disabled`。前者平铺选项，后者在下拉列表内连续多选。 |
+| `ZpCalendar` | 单日月历，使用 `YYYY-MM-DD` 字符串绑定 `v-model`，可选 `min`、`max`（含边界）。周一为每周首日，支持方向键移焦、回车选日。 |
 | `ZpButton`、`ZpIconButton` | 按钮默认 `type="button"`，可传 `type="submit"`；`variant="outline"` 为描边样式。纯图标按钮需要 `icon` 和可读的 `label`。 |
 | `ZpTextField` | 传入 `label` 和字符串 `v-model`，可传 `error` 关联错误说明。支持 `type="search"` 和原生输入属性。 |
 | `ZpSelect` | 传入 `label`、字符串 `v-model` 和 `{ value, label, disabled? }[]` 形式的 `options`。 |
