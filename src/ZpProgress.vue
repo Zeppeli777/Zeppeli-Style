@@ -1,7 +1,11 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import ZpSteelBall from './ZpSteelBall.vue'
-const props = defineProps<{ label: string; value?: number }>()
+const props = withDefaults(defineProps<{
+  label: string
+  value?: number
+  variant?: 'solid' | 'checker'
+}>(), { variant: 'solid' })
 const percent = computed(() => Number.isFinite(props.value)
   ? Math.min(100, Math.max(0, props.value!))
   : undefined)
@@ -12,7 +16,8 @@ const percent = computed(() => Number.isFinite(props.value)
     :aria-valuenow="percent" aria-valuemin="0" aria-valuemax="100">
     <div class="zp-progress-label"><span>{{ label }}</span><b>{{ percent === undefined ? '加载中' : percent + '%' }}</b></div>
     <div class="zp-track">
-      <div class="zp-fill" :class="{ 'zp-loading': percent === undefined }" :style="{ width: (percent ?? 30) + '%' }">
+      <div class="zp-fill" :class="{ 'zp-loading': percent === undefined, 'zp-fill-checker': variant === 'checker' }"
+        :style="{ width: (percent ?? 30) + '%' }">
         <ZpSteelBall :size="22" />
       </div>
     </div>

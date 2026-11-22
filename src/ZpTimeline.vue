@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import ZpIcon from './ZpIcon.vue'
 import ZpSteelBall from './ZpSteelBall.vue'
 
 defineProps<{
@@ -20,7 +19,7 @@ const states = { complete: '已完成', current: '进行中', upcoming: '待开�
       :aria-current="item.state === 'current' ? 'step' : undefined">
       <span class="zp-timeline-marker" aria-hidden="true">
         <ZpSteelBall v-if="item.state === 'current'" :size="25" />
-        <ZpIcon v-else-if="item.state === 'complete'" name="flag" />
+        <ZpSteelBall v-else-if="item.state === 'complete'" :size="18" />
       </span>
       <div class="zp-timeline-copy">
         <small>{{ states[item.state] }}</small>

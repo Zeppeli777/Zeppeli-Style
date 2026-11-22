@@ -1,9 +1,9 @@
 * { box-sizing: border-box; }
 html { scroll-padding-top: 5.5rem; }
-body { margin: 0; background: var(--zp-paper); color: var(--zp-ink); font: 16px/1.65 "Source Sans 3", "Microsoft YaHei", sans-serif; }
+body { margin: 0; background: var(--zp-surface-page); color: var(--zp-text-primary); font: 16px/1.65 var(--zp-font-body); }
 .site { max-width: 1140px; margin: auto; padding: 0 clamp(16px, 4vw, 54px); }
 .site > nav { padding: 1.2rem 0; border-bottom: 2px solid var(--zp-ink); }
-a { color: var(--zp-green); text-underline-offset: .26em; }
+a { color: var(--zp-brand-primary-hover); text-underline-offset: .26em; }
 .brand { display: flex; align-items: center; gap: .6rem; color: var(--zp-ink); font: bold 23px Georgia, serif; text-decoration: none; }
 .cover { display: grid; grid-template-columns: 1fr 1.1fr; gap: 3%; align-items: center; padding: clamp(30px, 6vw, 76px) 0; }
 .cover h1 { margin: 0; font: bold clamp(56px, 8vw, 108px)/.87 Georgia, serif; letter-spacing: -.07em; color: var(--zp-green); }
@@ -24,7 +24,7 @@ footer { border-top: 1px solid var(--zp-line); margin-top: 3rem; padding: 1rem 0
 .log-title, .journal-meta { display: flex; align-items: center; gap: .7rem; margin: 0 0 1rem; }
 .log-title svg { color: var(--zp-brown); }
 .journal { margin: auto; max-width: 42rem; line-height: 1.9; }
-.journal blockquote { margin: 2rem 0; padding: .8rem 1rem; border-left: 4px solid var(--zp-gold); background: #eee5d4; }
+.journal blockquote { margin: 2rem 0; padding: .8rem 1rem; border-left: 4px solid var(--zp-brand-accent); background: var(--zp-paper-100); }
 .range { display: grid; margin-top: 2rem; gap: .5rem; }
 input { accent-color: var(--zp-green); }
 @media (max-width: 680px) {
