@@ -15,7 +15,13 @@ npm run dev
 
 ## 在另一个 Vue 项目中使用
 
-在本仓库运行 `npm run build` 和 `npm pack`，然后在使用 Vue 3.5 的项目中运行 `npm install <压缩包路径>`。
+在使用 Vue 3.5 的项目中安装组件库：
+
+```sh
+npm install zeppeli-style
+```
+
+按需导入组件，并在应用入口或根组件中引入一次样式：
 
 ```vue
 <script setup>

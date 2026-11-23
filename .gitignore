@@ -4,3 +4,8 @@ demo-dist/
 *.tgz
 *.tsbuildinfo
 test-results/
+build/
+/.openai/
+/PLAN.md
+/site-bundle.zip
+/zeppeli-ui.kui.fig

@@ -105,7 +105,7 @@ onUnmounted(() => window.removeEventListener('hashchange', navigate))
             <path d="M0 200A200 200 0 0 1 200 0a124 124 0 0 1 124 124 76 76 0 0 1-76 76 47 47 0 0 1-47-47 29 29 0 0 1 29-29"/>
           </svg>
           <ZpSteelBall3D :size="440" />
-          <span class="rotation-hint" aria-hidden="true">拖动旋转 ↔</span>
+          <span class="rotation-hint" aria-hidden="true">拖动旋转 · 点按掷出回旋</span>
         </div>
       </section>
       <div class="cards">
